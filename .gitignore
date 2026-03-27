@@ -3,9 +3,8 @@
 .env.local
 .env.*.local
 
-# Database configuration (CONTAINS PASSWORDS - but keep .sql backups)
+# Database configuration (CONTAINS PASSWORDS)
 db_tools/
-scrapers/
 visualization/_db_config.py
 
 # Keep database backups (no secrets in SQL files)
