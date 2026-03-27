@@ -53,8 +53,10 @@ env/
 *.keras
 checkpoints/
 
-# Output directories
+# Output directories (but keep visualization output PNG files)
 output/
+!visualization/output/
+!visualization/output/*.png
 
 # OS
 .DS_Store
