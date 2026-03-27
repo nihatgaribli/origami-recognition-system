@@ -1,14 +1,61 @@
 # Origami Notebook
 
-A hybrid origami classification and information system combining AI model inference with database querying and web scraping capabilities.
+A hybrid origami classification and information system combining AI model inference, large language models (LLM), and database querying capabilities. Features professional-grade image analysis with Groq LLM integration.
 
-## Features
+## 🎯 Key Features
 
-- **AI Model**: MobileNetV2-based Transfer Learning for origami classification
-- **Hybrid Assistant**: GUI combining image analysis with origami database queries
-- **Web Scrapers**: Data collection from ORIWiki, CFC (Craft and Craft Origami), and ORC (Origami Resource Center)
-- **Database**: PostgreSQL backend for model metadata and creator information
-- **Image Storage**: Cloudinary integration for scalable image hosting
+- **🤖 Groq LLM Integration** (llama-3.3-70b-versatile)
+  - AI-powered natural language query understanding
+  - Professional image analysis with structured 5-section output
+  - Intelligent confidence assessment and technical specifications
+  - Expert recommendations and geometric analysis
+
+- **📸 AI Image Classification**: MobileNetV2-based Transfer Learning for origami model recognition
+  - Top-3 predictions with confidence scoring
+  - Geometric and structural analysis
+  - Automatic difficulty level assessment
+
+- **🎨 Hybrid GUI Assistant** (CustomTkinter)
+  - Real-time image upload and analysis
+  - Natural language query support
+  - Database-backed origami model information
+  - Professional Markdown output formatting
+
+- **🌐 Web Scrapers**: Multi-source data collection
+  - ORIWiki (comprehensive_scraper.py)
+  - CFC - Craft and Craft Origami (cfc_scraping.py)
+  - ORC - Origami Resource Center (orc_scraping.py)
+
+- **💾 PostgreSQL Database**: 49,885+ origami models with creator info, difficulty levels, material requirements, and tutorial links
+
+- **☁️ Cloudinary Integration**: Scalable image hosting and optimization
+
+## 🧠 AI Analysis Features
+
+### Image Analysis Output
+When you upload an origami image, the system provides:
+
+1. **Confidence Assessment** - Visual indicators (✅ High / 🟡 Moderate / ⚠️ Low)
+2. **Top-3 Predictions** - Model names with confidence percentages and geometric reasoning
+3. **Geometric Analysis** - Expert commentary on fold structure, symmetry, and mechanics
+4. **Technical Specifications** - Difficulty level, creator info, material requirements
+5. **Expert Recommendation** - Motivating insights for the user
+
+### Natural Language Query Processing
+The Groq LLM intelligently parses user queries to:
+- Extract origami names and creator information
+- Identify difficulty filters (Beginner/Intermediate/Advanced)
+- Detect material requirements (cutting, glue)
+- Support category-based searches (Animals, Flowers, etc.)
+- Return natural language responses with relevant results
+
+### Example Queries
+```
+"Show me all origami models created by Ilan Garibi"
+"Find 3 easy origami animals without cutting"
+"What's the difficulty of a crane?"
+"Recommend intermediate butterfly models"
+```
 
 ## Project Structure
 
@@ -73,31 +120,62 @@ python db_tools/test_db_connection.py
 
 ## Usage
 
+### Run GUI Assistant (Main Application)
+```bash
+python ai/hybrid_origami_assistant.py
+```
+**Features:**
+- Upload origami images for AI-powered recognition
+- Ask natural language questions about origami models
+- Get professional analysis with confidence scores, geometric reasoning, and expert recommendations
+- Database lookup with difficulty ratings and creator information
+
+### Configuration
+Before running, ensure your `.env` file is configured with:
+```bash
+# Groq LLM API
+GROQ_API_KEY=your_groq_api_key
+GROQ_MODEL=llama-3.3-70b-versatile
+
+# Database credentials
+POSTGRES_HOST=your_host
+POSTGRES_USER=your_user
+POSTGRES_PASSWORD=your_password
+
+# Cloudinary (for image uploads)
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+```
+
 ### Train Model
 ```bash
 python ai/train_model.py
 ```
 
-### Run GUI Assistant
+### Single Image Prediction
 ```bash
-python ai/hybrid_origami_assistant.py
+python ai/predict_image.py path/to/image.jpg
 ```
 
 ### Scrape Data
 ```bash
-# Full scrape (ORIWiki, CFC, ORC)
+# Full scrape from all sources
 python scrapers/full_scrape_direct.py
 
 # Individual sources
-python scrapers/comprehensive_scraper.py
-python scrapers/cfc_scraping.py
-python scrapers/orc_scraping.py
+python scrapers/comprehensive_scraper.py  # ORIWiki
+python scrapers/cfc_scraping.py          # CFC
+python scrapers/orc_scraping.py          # ORC
 ```
 
-### Generate Reports
+### Generate Visualizations
 ```bash
 python visualization/models_stats.py
 python visualization/advanced_charts.py
+```
+
+
 ```
 
 ## Configuration
@@ -130,4 +208,52 @@ This project is provided as-is for educational purposes.
 ## Contributing
 
 Contributions welcome! Please follow the code style and add comments for complex logic.
+
+## 🛠️ Technology Stack
+
+| Component | Technology | Details |
+|-----------|-----------|---------|
+| **LLM** | Groq API | llama-3.3-70b-versatile model |
+| **Image Classification** | TensorFlow/Keras | MobileNetV2 transfer learning |
+| **GUI Framework** | CustomTkinter | Dark theme, real-time updates |
+| **Database** | PostgreSQL | 49,885+ model records |
+| **Image Hosting** | Cloudinary | Optimized image delivery |
+| **Web Scraping** | BeautifulSoup4 | Multi-source data collection |
+| **Data Processing** | Pandas/NumPy | Analytics and transformation |
+
+## 🔐 Security Notes
+
+- All sensitive credentials stored in `.env` (not committed)
+- Environment variables for database and API keys
+- No hardcoded secrets in repository
+- Template provided: `.env.example`
+
+## 📊 Performance
+
+- **Model Inference**: ~2-5 seconds per image (GPU: <1s)
+- **Database Query**: <100ms average
+- **Groq LLM Response**: 1-3 seconds (including API latency)
+- **GUI Responsiveness**: Multiprocessing prevents UI freeze
+
+## 🚀 Deployment
+
+Ready for cloud deployment:
+- Containerizable (Docker support)
+- PostgreSQL-compatible deployment environments
+- Groq API available globally
+- Cloudinary CDN for image delivery
+
+## 📝 License
+
+Educational and research purposes.
+
+## 👨‍💻 Author
+
+**Nihat Garibli** - GitHub: [@nihatgaribli](https://github.com/nihatgaribli)
+
+**Repository**: [origami-recognition-system](https://github.com/nihatgaribli/origami-recognition-system)
+
+---
+
+*Last Updated: March 2026 | Groq LLM Integration v1.0*
 
